@@ -1,9 +1,12 @@
 /* use client */
 
-import Navbar from '@/components/navBar';
-import Image from 'next/image';
+import {Navbar } from '@/components/navBar';
 
-export default function Home() {
+
+
+export default function Page() {
+ 
+
   return (
     <div className="container mx-auto">
       <Navbar />

@@ -1,56 +1,42 @@
+"use client";
 import { useState } from 'react';
+import Link from 'next/link';
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export function Navbar () {
+  const [showSubMenu, setShowSubMenu] = useState(false);
 
   return (
-    <nav className="bg-white">
-      <div className="container mx-auto flex justify-between items-center py-4">
+    <nav className="bg-gray-800 text-white">
+      <div className="container mx-auto flex items-center justify-between p-4">
         <div className="flex items-center">
-          {/* Logo */}
-          <a href="/">
-            {/* Aqui você pode colocar o componente Image do Next.js para o logo */}
-            Logo
-          </a>
-        </div>
-
-        <div className="md:hidden">
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-gray-800"
-          >
-            {/* Ícone de menu */}
-            Menu
+          <button className="lg:hidden px-2 py-1 text-white">
+            <span className="block"></span>
+            <span className="block mt-1"></span>
           </button>
+          <Link href="/">
+            <img src="/assets/img/logo.png" alt="Logo" className="h-8 ml-4 cursor-pointer" />
+          </Link>
         </div>
-
-        <div
-          className={`${
-            isMenuOpen ? 'block' : 'hidden'
-          } md:flex text-lg space-x-8`}
-        >
-          <div className="relative group">
-            <a href="#" className="text-gray-800">
-              Home
-            </a>
-            <div className="absolute left-0 hidden group-hover:block mt-2 space-y-2 bg-white border border-gray-300">
-              <a href="index.html" className="block px-4 py-2">
-                Home
-              </a>
-              <a href="about.html" className="block px-4 py-2">
-                Sobre nós
-              </a>
-            </div>
+        <div className="hidden lg:flex items-center">
+          <div className="relative">
+            <Link href="/">Home</Link>
+            <button onClick={() => setShowSubMenu(!showSubMenu)}>▼</button>
+            {showSubMenu && (
+              <div className="absolute bg-gray-800 text-white mt-2">
+                <Link href="/home">Home</Link>
+                <Link href="/sobre-nos">Sobre Nós</Link>
+              </div>
+            )}
           </div>
-
-          {/* Outros itens de menu, como Sistemas, Sites, Marketing Digital, etc. */}
-          {/* Você pode copiar o div acima e ajustar os links e texto conforme necessário */}
-
+          <Link href="/sistemas">Sistemas</Link>
+          <Link href="/sites">Sites</Link>
+          <Link href="/marketing-digital">Marketing Digital</Link>
+          <Link href="/clientes">Clientes</Link>
+          <Link href="/blog">Blog</Link>
+          <Link href="/contato">Contato</Link>
         </div>
       </div>
     </nav>
   );
 };
-
-export default Navbar;
 
