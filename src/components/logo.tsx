@@ -7,8 +7,8 @@ const Logo: React.FC = () => {
         <Image 
           src="/assets/img/logo.png" // Certifique-se de fornecer o caminho correto para a imagem
           alt="Logo da Empresa"
-          width={150} // Defina a largura
-          height={50} // Defina a altura
+          height={50} 
+          width={150} 
         />
       </a>
     </div>
